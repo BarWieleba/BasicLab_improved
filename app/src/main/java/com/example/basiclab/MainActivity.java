@@ -77,15 +77,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hello(){
-        Snackbar.make(getWindow().getDecorView().getRootView(), "Hello there", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        Snackbar.make(findViewById(R.id.id_content_main), "Hello there", Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
     public void whoMadeMe(){
-        Snackbar.make(getWindow().getDecorView().getRootView(), "Bartłomiej Wieleba made me", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        Snackbar.make(findViewById(R.id.id_content_main), "Bartłomiej Wieleba made me", Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
     public void info(){
-        Snackbar.make(getWindow().getDecorView().getRootView(), "I'm just a simple app", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        Snackbar.make(findViewById(R.id.id_content_main), "I'm just a simple app", Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
     public void settings(){
-        Snackbar.make(getWindow().getDecorView().getRootView(), "This menu item will be changed later", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        Snackbar.make(findViewById(R.id.id_content_main), "This menu item will be changed later", Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
 }
