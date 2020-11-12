@@ -77,5 +77,12 @@ public class ThirdFragment extends Fragment {
                         .navigate(R.id.action_ThirdFragment_to_FirstFragment);
             }
         });
+        view.findViewById(R.id.button_third_previous).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(ThirdFragment.this)
+                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
+            }
+        });
     }
 }

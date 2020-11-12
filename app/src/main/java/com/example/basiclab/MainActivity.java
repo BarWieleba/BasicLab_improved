@@ -1,5 +1,7 @@
 package com.example.basiclab;
 
+import android.app.FragmentTransaction;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -7,6 +9,12 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.FragmentNavigator;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.MenuInflater;
 import android.view.View;
@@ -29,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                /*Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                fragment.getView().setBackgroundColor(Color.WHITE);*/
             }
         });
     }
@@ -57,17 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
 
-            case R.id.hello_item:
-                hello();
+            case R.id.goToFirst:
+                goToFirst();
                 return true;
-            case R.id.whoMadeMe:
-                whoMadeMe();
+            case R.id.goToSecond:
+                gotToSecond();
                 return true;
-            case R.id.info:
-                info();
-                return true;
-            case R.id.action_settings:
-                settings();
+            case R.id.goToThird:
+                gotToThird();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -76,16 +83,16 @@ public class MainActivity extends AppCompatActivity {
         //return super.onOptionsItemSelected(item); //OG
     }
 
-    public void hello(){
-        Snackbar.make(findViewById(R.id.id_content_main), "Hello there", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    public void goToFirst(){
+        Snackbar.make(findViewById(R.id.id_content_main), "Welcome to the first fragment", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        NavHostFragment.findNavController(getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment)).navigate(R.id.action_to_FirstFragment);
     }
-    public void whoMadeMe(){
-        Snackbar.make(findViewById(R.id.id_content_main), "Bartłomiej Wieleba made me", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    public void gotToSecond(){
+        Snackbar.make(findViewById(R.id.id_content_main), "Welcome to the second fragment", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        NavHostFragment.findNavController(getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment)).navigate(R.id.action_to_SecondFragment);
     }
-    public void info(){
-        Snackbar.make(findViewById(R.id.id_content_main), "I'm just a simple app", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-    }
-    public void settings(){
-        Snackbar.make(findViewById(R.id.id_content_main), "This menu item will be changed later", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    public void gotToThird(){
+        Snackbar.make(findViewById(R.id.id_content_main), "Welcome to the second fragment", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        NavHostFragment.findNavController(getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment)).navigate(R.id.action_to_ThirdFragment);
     }
 }
