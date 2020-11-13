@@ -1,6 +1,5 @@
 package com.example.basiclab;
 
-import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -11,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.FragmentNavigator;
@@ -21,6 +21,8 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,8 +39,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                /*Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                fragment.getView().setBackgroundColor(Color.WHITE);*/
+                FragmentManager fragmentManager = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment).getChildFragmentManager();
+                //FragmentManager fragmentManager = MainActivity.this.getSupportFragmentManager();
+                List<Fragment> fragments =  fragmentManager.getFragments();
+
+                for (Fragment fr : fragments){
+                    if (fr.isVisible()){
+                        fr.getView().setBackgroundColor(Color.RED);
+                    }
+                }
             }
         });
     }
